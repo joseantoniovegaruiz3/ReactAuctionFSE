@@ -4,7 +4,11 @@ using Microsoft.EntityFrameworkCore;
 using Persistence;
 using MediatR;
 using Application.Bids;
-using static MediatR.IMediator; 
+
+using System;
+using System.Threading.Tasks;
+using Application.Core;
+using Microsoft.AspNetCore.Authorization;
 
 
 
@@ -30,9 +34,23 @@ namespace API.Controllers
     } 
 
     [HttpGet("/e-auction/api/v1/seller/show-bids/{id}")]
-    public async Task <ActionResult<Bid>> GetBid(Guid id){
-        return await Mediator.Send(new Details.Query{Id=id});
-    }
+    public async Task<ActionResult<Bid>> GetBid(Guid id)
+        {
+            return await Mediator.Send(new Details.Query{Id = id});
+        }
+
+    [HttpPut("/e-auction/api/v1/seller/show-bids/{productId}/{sellerId}/{bidAmount}")]
+    public async Task <IActionResult> GetBidByProductIdSellerId(string productId,string sellerId,double bidAmount)
+        {
+        Bid bid=new Bid();
+        bid.ProductId=productId;
+        bid.SellerId=sellerId;
+        bid.BidAmount=bidAmount;
+
+        return Ok(await Mediator.Send(new EditCombined.Command{Bid=bid}));     
+        }
+
+    
 
     [HttpPut("/e-auction/api/v1/buyer/update-bid/{id}")]
     public async Task <IActionResult> EditBid(Guid id, Bid bid)

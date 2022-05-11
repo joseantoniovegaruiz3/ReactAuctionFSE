@@ -2,9 +2,13 @@ using Domain;
 using MediatR;
 using System;
 using Persistence;
+using AutoMapper;
+using Application.Core;
+using Microsoft.EntityFrameworkCore;
+
 namespace Application.Bids
 {
-    public class Details
+public class Details
     {
         public class Query: IRequest<Bid>
         {

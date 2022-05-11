@@ -24,6 +24,17 @@ namespace API.Controllers
     }
 
 
+
+
+    [HttpPut("/e-auction/api/v1/seller/update-product/{id}")]
+    public async Task <IActionResult> EditProduct(Guid id, Product product)
+    {
+        product.Id=id;
+        return Ok(await Mediator.Send(new Edit.Command{Product=product}));
+    }
+
+
+
     [HttpDelete("{id}")]
     public async Task<IActionResult> DeleteProduct(Guid id)
     {

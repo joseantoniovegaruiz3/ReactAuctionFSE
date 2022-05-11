@@ -16,6 +16,7 @@ using Persistence;
 using MediatR;
 using Application.Bids;
 using AutoMapper;
+using Application.Core ;
 namespace API
 {
     public class Startup
@@ -38,10 +39,12 @@ namespace API
             });
             services.AddDbContext<DataContext>(opt =>
             {
-                opt.UseSqlite(_config.GetConnectionString("DefaultConnection"));
+                opt.UseSqlServer(@"Server=tcp:auctionapiserver.database.windows.net,1433;Initial Catalog=auctiondb;Persist Security Info=False;User ID=asfend;Password=Hariseldon77!;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+               
             }
             );
 
+            
             services.AddCors(opt=>
             {
                 opt.AddPolicy("CorsPolicy",policy=>
@@ -51,7 +54,7 @@ namespace API
 
             });
             services.AddMediatR(typeof(List.Handler).Assembly);
-            services.AddAutoMapper(typeof(MappingProfiles));
+            services.AddAutoMapper(typeof(MappingProfiles).Assembly);
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -67,6 +70,8 @@ namespace API
             //   app.UseHttpsRedirection();
 
             app.UseRouting();
+            app.UseDefaultFiles();
+            app.UseStaticFiles();
             app.UseCors("CorsPolicy");
 
             app.UseAuthorization();
@@ -74,6 +79,7 @@ namespace API
             app.UseEndpoints(endpoints =>
             {
                 endpoints.MapControllers();
+                endpoints.MapFallbackToController("Index","Fallback");
             });
         }
     }
