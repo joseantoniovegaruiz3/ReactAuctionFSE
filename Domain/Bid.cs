@@ -15,6 +15,7 @@ namespace Domain
         public string? ProductId { get; set; }
 
         public string? SellerId { get; set; }
+        public string? BuyerId { get; set; }
 
        
 

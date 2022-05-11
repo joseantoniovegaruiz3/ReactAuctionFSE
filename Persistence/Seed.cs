@@ -112,26 +112,35 @@ namespace Persistence
                     BidAmount=300.00,
                     ProductId="Machine Learning for Hackers",
                     SellerId="geoffrey.Lessel@mockcompany.com",
+                    BuyerId="don.smith@buyersmock.com",
                 },
                 new Bid{
                     BidAmount=200.00,
                     ProductId="Image Processing & Mathematical Morphology",
                     SellerId="Joan.Jet@mockcompany.com",
+                    BuyerId="mark.joe@buyersmock.com",
+
                 },
                 new Bid{
                     BidAmount=100.00,
                     ProductId="Image Processing & Mathematical Morphology",
                     SellerId="jack.McGinnis@mockcompany.com",
+                    BuyerId="carl.yamato@mockcompany.com",
+
                 },
                 new Bid{
                     BidAmount=500.00,
                     ProductId="Machine Learning for Hackers",
                     SellerId="Joan.Jet@mockcompany.com",
+                    BuyerId="mark.yoshida@mockcompany.com",
+
                 },
                 new Bid{
                     BidAmount=600.00,
                     ProductId="Birth of a Theorem	Villani",
                     SellerId="Stephen.Tyler@mockcompany.com",
+                     BuyerId="don.yoshiro@mockcompany.com",
+
                 }
  
 

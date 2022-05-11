@@ -39,12 +39,12 @@ namespace API.Controllers
             return await Mediator.Send(new Details.Query{Id = id});
         }
 
-    [HttpPut("/e-auction/api/v1/seller/show-bids/{productId}/{sellerId}/{bidAmount}")]
-    public async Task <IActionResult> GetBidByProductIdSellerId(string productId,string sellerId,double bidAmount)
+    [HttpPut("/e-auction/api/v1/buyer/update-bid/{productId}/{buyerEmailId}/{bidAmount}")]
+    public async Task <IActionResult> GetBidByProductIdSellerId(string productId,string buyerEmailId,double bidAmount)
         {
         Bid bid=new Bid();
         bid.ProductId=productId;
-        bid.SellerId=sellerId;
+        bid.BuyerId=buyerEmailId;
         bid.BidAmount=bidAmount;
 
         return Ok(await Mediator.Send(new EditCombined.Command{Bid=bid}));     

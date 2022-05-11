@@ -31,6 +31,9 @@ namespace Persistence.Migrations
                     b.Property<double>("BidAmount")
                         .HasColumnType("float");
 
+                    b.Property<string>("BuyerId")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<string>("ProductId")
                         .HasColumnType("nvarchar(max)");
 

@@ -16,7 +16,8 @@ namespace Persistence.Migrations
                     Id = table.Column<Guid>(type: "uniqueidentifier", nullable: false),
                     BidAmount = table.Column<double>(type: "float", nullable: false),
                     ProductId = table.Column<string>(type: "nvarchar(max)", nullable: true),
-                    SellerId = table.Column<string>(type: "nvarchar(max)", nullable: true)
+                    SellerId = table.Column<string>(type: "nvarchar(max)", nullable: true),
+                    BuyerId = table.Column<string>(type: "nvarchar(max)", nullable: true)
                 },
                 constraints: table =>
                 {

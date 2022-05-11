@@ -12,7 +12,7 @@ using Persistence;
 namespace Persistence.Migrations
 {
     [DbContext(typeof(DataContext))]
-    [Migration("20220510182035_InitialMigration")]
+    [Migration("20220511090407_InitialMigration")]
     partial class InitialMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -32,6 +32,9 @@ namespace Persistence.Migrations
 
                     b.Property<double>("BidAmount")
                         .HasColumnType("float");
+
+                    b.Property<string>("BuyerId")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("ProductId")
                         .HasColumnType("nvarchar(max)");
