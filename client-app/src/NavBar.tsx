@@ -9,7 +9,6 @@ export default function NavBar() {
                 <Menu.Item header>
                     <img src="/assets/logo.png" alt="logo"/>
                         Bids
-
                 </Menu.Item>
                 <Menu.Item name='Bids'/>
 
