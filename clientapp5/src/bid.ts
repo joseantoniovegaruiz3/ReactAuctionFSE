@@ -4,4 +4,5 @@
         bidAmount: number;
         productId: string;
         sellerId: string;
+        buyerId:string;
     }

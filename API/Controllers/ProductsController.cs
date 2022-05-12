@@ -5,8 +5,12 @@ using Persistence;
 using MediatR;
 using Application.Products;
 using static MediatR.IMediator;
+using Microsoft.AspNetCore.Authorization;
+
 namespace API.Controllers
 {
+
+[AllowAnonymous]
     public class ProductsController:BaseApiController
     {
 

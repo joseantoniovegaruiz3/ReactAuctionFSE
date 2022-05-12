@@ -1,6 +1,8 @@
 using System;
 using System.Collections.Generic;
 
+using System.Collections.Generic;
+
 namespace Application.Bids
 {
     public class BidDto

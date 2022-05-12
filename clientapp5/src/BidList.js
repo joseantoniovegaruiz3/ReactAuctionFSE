@@ -12,7 +12,7 @@ class BidList extends React.Component {
   }
 
   componentDidMount() {
-    const apiUrl = 'http://localhost:5001/e-auction/api/v1/seller/show-bids/';
+  const apiUrl = 'http://auctionrestfse.azurewebsites.net/e-auction/api/v1/seller/show-bids/';
 
     fetch(apiUrl)
       .then(res => res.json())
@@ -46,6 +46,7 @@ class BidList extends React.Component {
                 <th>Product ID</th>
                 <th>Bid Amount</th>
                 <th>Seller ID</th>
+                <th>Buyer ID</th>
               </tr>
             </thead>
             <tbody>
@@ -55,6 +56,7 @@ class BidList extends React.Component {
                   <td>{bid.productId}</td>
                   <td>{bid.bidAmount}</td>
                   <td>{bid.sellerId}</td>
+                  <td>{bid.buyerId}</td>
                  
                 </tr>
               ))}
