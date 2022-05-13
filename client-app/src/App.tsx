@@ -1,10 +1,11 @@
-import React, { useEffect, useState } from 'react';
+import React, { Fragment, useEffect, useState } from 'react';
 import logo from './logo.svg';
 import './App.css';
 import axios from 'axios';
-import { Header, List } from 'semantic-ui-react';
+import { Container, Header, List } from 'semantic-ui-react';
 import NavBar from './NavBar';
 import Bid from './app/bid';
+import BidDashBoard from './features/bids/dashboard/BidDashboard';
 
 
 function App() {
@@ -17,19 +18,17 @@ function App() {
     })
   },[])
 
-  return (
-      <div >
+    return (
+        <Fragment >
 
           <NavBar />
-          <List>
-              {bids.map(bid => (
-                  <List.Item key={bid.id}>
-                      {bid.id}
-                  </List.Item>
-              ))}
-          </List>
+          <Container style={{marginTop: '7em'}} >
+                <BidDashBoard bids={bids} />
+       
+           </Container >
 
-    </div>
+
+        </Fragment>
   );
 }
 
