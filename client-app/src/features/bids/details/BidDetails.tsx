@@ -4,11 +4,13 @@ import Bid from '../../../app/bid';
 
 
 interface Props {
-	bid: Bid
+	bid: Bid;
+	cancelSelectBid: () => void;
+	openForm: (id: string)=>void;
 
 }
 
-export default function BidDetails({ bid }:Props) {
+export default function BidDetails({ bid, cancelSelectBid ,openForm}: Props) {
 	return (
 		<Card fluid>
 
@@ -21,8 +23,8 @@ export default function BidDetails({ bid }:Props) {
 			</Card.Content>
 			<Card.Content extra>
 				<Button.Group widths='2'>
-					<Button basic color='blue' content='Edit' />
-					<Button basic color='grey' content='Cancel' />
+					<Button onClick={()=>openForm(bid.id) } basic color='blue' content='Edit' />
+					<Button onClick={cancelSelectBid} basic color='grey' content='Cancel' />
 
 				</Button.Group>
 			</Card.Content>

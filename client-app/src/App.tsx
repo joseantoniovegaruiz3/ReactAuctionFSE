@@ -9,21 +9,51 @@ import BidDashBoard from './features/bids/dashboard/BidDashboard';
 
 
 function App() {
-    const [bids, setBids] = useState < Bid[]>([]);
+    const [bids, setBids] = useState<Bid[] >([]);
+    const [selectedBid, setSelectedBid] = useState<Bid | undefined>(undefined);
+    const [editMode, setEditMode] = useState(false);
+
   useEffect(()=>{
-      axios.get<Bid[]>('https://auctionrestfse.azurewebsites.net/e-auction/api/v1/seller/show-bids/').then(response=>{
+      axios.get<Bid[]>('https://auctionrestfse.azurewebsites.net/e-auction/api/v1/seller/show-bids').then(response=>{
     
     console.log(response);  
     setBids(response.data);
     })
   },[])
 
+    function handleSelectedBid(id: string) {
+        setSelectedBid(bids.find(x => x.id === id));
+    }
+
+    function handleCancelSelectedBid() {
+        setSelectedBid(undefined);
+
+    }
+
+    function handleFormOpen(id?: string) {
+        id ? handleSelectedBid(id) : handleCancelSelectedBid();
+        setEditMode(true);
+     }
+
+    function handleFormClose() {
+        setEditMode(false);
+    }
+
+
     return (
         <Fragment >
 
-          <NavBar />
+            <NavBar openForm={ handleFormOpen}/>
           <Container style={{marginTop: '7em'}} >
-                <BidDashBoard bids={bids} />
+                <BidDashBoard
+                    bids={bids}
+                    selectedBid={selectedBid}
+                    selectBid={handleSelectedBid}
+                    cancelSelectBid={handleCancelSelectedBid}
+                    editMode={editMode}
+                    openForm={handleFormOpen}
+                    closeForm={handleFormClose}
+                />
        
            </Container >
 
