@@ -14,14 +14,18 @@ interface Props {
     editMode: boolean;
     openForm: (id: string)=>void;
     closeForm: () => void;
-
+    createOrEdit: (bid: Bid) => void;
+    deleteBid: (id: string) => void;
 }
 
-export default function BidDashBoard({ bids, selectedBid, selectBid, cancelSelectBid, editMode, openForm, closeForm }: Props) {
+export default function BidDashBoard({ bids, selectedBid, selectBid, cancelSelectBid,
+    editMode, openForm, closeForm, createOrEdit, deleteBid }: Props) {
     return (
         <Grid>
             <Grid.Column width='10'>
-                <BidList bids={bids} selectBid={selectBid} />
+                <BidList bids={bids}
+                         selectBid={selectBid}
+                         deleteBid={deleteBid} />
             </Grid.Column>
             <Grid.Column width='6'>
                 {selectedBid && !editMode &&
@@ -31,8 +35,8 @@ export default function BidDashBoard({ bids, selectedBid, selectBid, cancelSelec
                         openForm={ openForm}
                     />}
                     
-                    {editMode &&
-                        <BidForm closeForm={closeForm} bid={selectedBid}  />
+                {editMode &&
+                    <BidForm closeForm={closeForm} bid={selectedBid} createOrEdit={createOrEdit} />
                     }
             </Grid.Column>
         </Grid>

@@ -16,7 +16,7 @@ export default function NavBar({openForm}:Props) {
                 <Menu.Item name='Bids'/>
 
                 <Menu.Item>
-                    <Button OnClick={ openForm} positive content='Create Bid'/>
+                    <Button onClick={ openForm} positive content='Create Bid'/>
                 </Menu.Item>
 
             </Container>

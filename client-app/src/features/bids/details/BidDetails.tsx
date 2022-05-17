@@ -20,6 +20,12 @@ export default function BidDetails({ bid, cancelSelectBid ,openForm}: Props) {
 				<Card.Description>
 					{ bid.sellerId }
 				</Card.Description>
+
+
+				<Card.Description>
+					{bid.bidAmount}
+				</Card.Description>
+
 			</Card.Content>
 			<Card.Content extra>
 				<Button.Group widths='2'>

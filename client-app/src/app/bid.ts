@@ -1,7 +1,7 @@
 
     export default interface Bid {
         id: string;
-        bidAmount: number;
+        bidAmount: string;
         productId: string;
         sellerId: string;
     }

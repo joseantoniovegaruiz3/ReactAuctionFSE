@@ -1,11 +1,15 @@
 import React, { Fragment, useEffect, useState } from 'react';
-import logo from './logo.svg';
+
 import './App.css';
 import axios from 'axios';
-import { Container, Header, List } from 'semantic-ui-react';
+import { Container} from 'semantic-ui-react';
 import NavBar from './NavBar';
 import Bid from './app/bid';
 import BidDashBoard from './features/bids/dashboard/BidDashboard';
+
+import { v4 as uuid } from 'uuid';
+
+
 
 
 function App() {
@@ -39,6 +43,18 @@ function App() {
         setEditMode(false);
     }
 
+    function handleCreateOrEditBid(bid: Bid) {
+        bid.id ? setBids([...bids.filter(x => x.id !== bid.id), bid])
+            : setBids([...bids, {...bid,id:uuid()}]);
+        setEditMode(false);
+        setSelectedBid(bid);
+
+
+    }
+
+    function handleDeleteBid(id: string) {
+        setBids([...bids.filter(x=>x.id !==id)])
+    }
 
     return (
         <Fragment >
@@ -53,6 +69,8 @@ function App() {
                     editMode={editMode}
                     openForm={handleFormOpen}
                     closeForm={handleFormClose}
+                    createOrEdit={handleCreateOrEditBid}
+                    deleteBid={handleDeleteBid}
                 />
        
            </Container >

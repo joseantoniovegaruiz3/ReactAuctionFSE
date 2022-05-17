@@ -5,9 +5,10 @@ import Bid from '../../../app/bid';
 interface Props {
     bids: Bid[];
     selectBid: (id: string) => void;
+    deleteBid: (id: string) => void;
 }
 
-export default function BidList({ bids, selectBid }: Props) {
+export default function BidList({ bids, selectBid, deleteBid }: Props) {
     return (
         <Segment>
             <Item.Group divided>
@@ -20,7 +21,9 @@ export default function BidList({ bids, selectBid }: Props) {
                                 <div>{bid.sellerId}</div>
                             </Item.Description>
                             <Item.Extra>
-                                <Button onClick={ ()=>selectBid(bid.id)} floated='right' content='View' color='blue' />
+                                <Button onClick={() => selectBid(bid.id)} floated='right' content='View' color='blue' />
+                                <Button onClick={() => deleteBid(bid.id)} floated='right' content='Delete' color='red' />
+
                                 <Label basic content={bid.bidAmount}/>
                                 </Item.Extra>
 
