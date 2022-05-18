@@ -8,6 +8,7 @@ import Bid from './app/bid';
 import BidDashBoard from './features/bids/dashboard/BidDashboard';
 
 import { v4 as uuid } from 'uuid';
+import agent from './app/api/agent';
 
 
 
@@ -18,10 +19,10 @@ function App() {
     const [editMode, setEditMode] = useState(false);
 
   useEffect(()=>{
-      axios.get<Bid[]>('https://auctionrestfse.azurewebsites.net/e-auction/api/v1/seller/show-bids').then(response=>{
+      agent.Bids.list().then(response=>{
     
     console.log(response);  
-    setBids(response.data);
+    setBids(response);
     })
   },[])
 
