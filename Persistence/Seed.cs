@@ -23,7 +23,7 @@ namespace Persistence
                     DetailedDescription="Shih, Frank	signal_processing	241	CRC",
                     Category="Science",
                     StartingPrice="4.0",
-                    BidEnDate= DateTime.Now.AddMonths(-4),
+                    BidEnDate= DateTime.Now.AddMonths(-4).ToUniversalTime(),
                 },
                     new Product{
                     ProductName="Birth of a Theorem	Villani",
@@ -31,7 +31,7 @@ namespace Persistence
                     DetailedDescription="Birth of a Theorem	Villani, Cedric	mathematics	234	Bodley Head",
                     Category="Science",
                     StartingPrice="6.0",
-                    BidEnDate= DateTime.Now.AddMonths(-3),
+                    BidEnDate= DateTime.Now.AddMonths(-3).ToUniversalTime(),
                 },
                   new Product{
                     ProductName="Machine Learning for Hackers",
@@ -39,7 +39,7 @@ namespace Persistence
                     DetailedDescription="Drew	tech	data_science	233	O'Reilly",
                     Category="Science",
                     StartingPrice="7.0",
-                    BidEnDate= DateTime.Now.AddMonths(-1),
+                    BidEnDate= DateTime.Now.AddMonths(-1).ToUniversalTime(),
 
                 }
 
