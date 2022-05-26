@@ -15,7 +15,7 @@ namespace Persistence
                     DetailedDescription="Hawking, Stephen	mathematics	Height 197	Penguin",
                     Category="Science",
                     StartingPrice="3.0",
-                    BidEnDate= DateTime.Now.AddMonths(-2),
+                    BidEnDate= DateTime.Now.AddMonths(-2).ToUniversalTime(),
                 },
                     new Product{
                     ProductName="Image Processing & Mathematical Morphology",

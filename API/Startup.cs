@@ -39,7 +39,9 @@ namespace API
             });
             services.AddDbContext<DataContext>(opt =>
             {
-                opt.UseSqlServer(@"Server=tcp:auctionapiserver.database.windows.net,1433;Initial Catalog=auctiondb;Persist Security Info=False;User ID=asfend;Password=Hariseldon77!;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");
+      /*          opt.UseSqlServer(@"Server=tcp:auctionapiserver.database.windows.net,1433;Initial Catalog=auctiondb;Persist Security Info=False;User ID=asfend;Password=Hariseldon77!;MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;");*/
+
+       opt.UseNpgsql(" Server=localhost; Port=5432; User Id=admin; Password=secret; Database=auctions");
                
             }
             );
@@ -49,7 +51,8 @@ namespace API
             {
                 opt.AddPolicy("CorsPolicy",policy=>
                 {
-                        policy.AllowAnyMethod().AllowAnyHeader().WithOrigins("https://auctionrestfse.azurewebsites.net:3000");
+                      /*  policy.AllowAnyMethod().AllowAnyHeader().WithOrigins("https://auctionrestfse.azurewebsites.net:3000");*/
+                        policy.AllowAnyMethod().AllowAnyHeader().WithOrigins("https://localhost:3000");
                 });
 
             });
@@ -60,6 +63,9 @@ namespace API
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
         public void Configure(IApplicationBuilder app, IWebHostEnvironment env)
         {
+
+            AppContext.SetSwitch("Npgsql.EnableLegacyTimestampBehavior", true);
+            AppContext.SetSwitch("Npgsql.DisableDateTimeInfinityConversions", true);
             if (env.IsDevelopment())
             {
                 app.UseDeveloperExceptionPage();
